@@ -131,7 +131,8 @@ static void BM_SortReverseDoubles(benchmark::State& state)
 
     for (auto _ : state)
     {
-        std::vector<double> data = source;
+        std::vector<double> data = source; // you can pause the state here  state.PauseTiming();  state.ResumeTiming(); to not count vector copying time      
+        
 
         sort(data, threshold);
 
@@ -154,3 +155,7 @@ BENCHMARK(BM_SortReverseDoubles)
     ->Arg(128);
 
 BENCHMARK_MAIN();
+
+/*
+ * Score is 10/10
+ */

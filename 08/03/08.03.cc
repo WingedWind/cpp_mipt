@@ -67,5 +67,10 @@ int main()
     std::cout << "floatLog2(0.5f)  = " << floatLog2(0.5f) << '\n';
     std::cout << "floatLog2(0.1f)  = " << floatLog2(0.1f) << '\n';
 
+
     return 0;
 }
+
+/*
+ * Score is 10/10
+ */

@@ -81,7 +81,7 @@ class Rational
 private:
     T numerator {};
     T denominator {1};
-
+    
     void normalize() {
         if (denominator == T{}) {
             throw Exception("Rational error: denominator must not be zero");
@@ -108,7 +108,17 @@ private:
 
 public:
     Rational() = default;
-
+	
+	/*
+	 * It is bad to have different variants of name of same/similar variable
+	 * 
+	 * numerator: num, numerator
+	 * denominator: denom, denominator
+	 * 
+	 * Rational(T numerator, T denominator):  numerator(numerator), denominator(denominator)
+	 * works. And these types of constructors were designed for this particular purpose
+	 * 
+	 */
     Rational(T num, T denom) : numerator(num), denominator(denom) {
         if (denominator == T{}) {
             throw Exception("Rational constructor error: zero denominator");
@@ -271,6 +281,13 @@ void demonstrate_bad_alloc() {
 }
 
 int main() {
+	
+	Rational<int> a(3, 4);
+	// auto b = a / 2; I cannot do this
+	auto b = a / Rational(2, 1);
+	b.print();
+	
+
     try {
         std::cout << "=== Rational tests ===\n";
         test_rational();
@@ -343,3 +360,13 @@ int main() {
 
     return 0;
 }
+
+/*
+ * Score is 10/10, with the following comments:
+ * 
+ * Exceptions are correct
+ * Rational class works but is not efficient
+ * I cannot do this: auto b = a / 2;
+ * Because there is no default argument for denominator
+ * Rational(T num, T denom = T{1}) can be implemented
+ */
