@@ -1,0 +1,2 @@
+add_executable(polymorphic_allocators 09.10.cc)
+target_compile_features(polymorphic_allocators PUBLIC cxx_std_23)
