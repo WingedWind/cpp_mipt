@@ -111,7 +111,11 @@ static std::vector<std::string> make_strings(std::size_t count) {
   for (auto i = 0uz; i < count; ++i) {
     values.push_back("string_" + std::to_string(i) + "_" + std::to_string(i * 2654435761u));
   }
-
+	// You need strings like: fjis, vlpw, gjwn, pgoh, pqxx, qtsk
+	// Randomly generated
+	// Unique
+	// Of same length 
+	// You can choose length = 10 / 50 / 100 for example
   return values;
 }
 
@@ -183,3 +187,13 @@ int main() {
   write_csv(hashes, sizes, "hash_collisions.csv");
   print_summary(hashes, sizes.back());
 }
+
+/*
+ * Score is 8/10
+ * 
+ * If you want you may redo and change upto 10/10
+ * 
+ * 1. The strings must be random not sequential, use the random std library
+ * Use the teacher's template: https://github.com/i-s-m-mipt/Education/blob/master/projects/examples/source/10.42.cpp
+ * 
+ */
